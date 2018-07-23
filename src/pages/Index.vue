@@ -15,6 +15,9 @@
         <router-link to="/CameraAndUpload">
             <el-button>摄像头和图片上传功能</el-button>
         </router-link>
+        <router-link to="/TreeDemo">
+            <el-button>树形组件的应用</el-button>
+        </router-link>
     </section>
 </template>
 

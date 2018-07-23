@@ -6,6 +6,7 @@ import ImageMagnifier from '@/pages/ImageMagnifier'
 import UserCamera from '@/pages/UserCamera'
 import NewUserCamera from '@/pages/NewUserCamera'
 import CameraAndUpload from '@/pages/CameraAndUpload'
+import TreeDemo from '@/pages/TreeDemo'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/CameraAndUpload',
       name: 'CameraAndUpload',
       component: CameraAndUpload
+    },
+    {
+      path: '/TreeDemo',
+      name: 'TreeDemo',
+      component: TreeDemo
     }
   ]
 })

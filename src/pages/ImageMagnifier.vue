@@ -1,10 +1,10 @@
 <template>
     <section>
         <div id="bigContaniner" class="big-img-wrap">
-            <img id="bigImg" src="../assets/logo.png">
+            <img id="bigImg" src="../assets/images/logo.png">
         </div>
         <div id="smallContaniner" class="small-img-wrap">
-            <img id="smallImg" src="../assets/logo.png">
+            <img id="smallImg" src="../assets/images/logo.png">
             <div id="mirror" class="mirror"></div>
         </div>
     </section>
@@ -25,7 +25,7 @@ export default {
             }
             $.magnifier(options);
         }
-        img.src = require('../assets/logo.png')
+        img.src = require('../assets/images/logo.png')
     }
 }
 </script>

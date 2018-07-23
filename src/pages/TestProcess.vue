@@ -14,8 +14,8 @@ export default {
     },
     data(){
         return {
-            originalUrl: require('../assets/logo.png'),
-            imgUrl: require('../assets/logo.png')
+            originalUrl: require('../assets/images/logo.png'),
+            imgUrl: require('../assets/images/logo.png')
         }
     },
     methods: {
