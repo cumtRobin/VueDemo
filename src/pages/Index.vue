@@ -1,6 +1,6 @@
 <template>
     <section>
-        <router-link to="/TestProcess">
+        <router-link to="/ImgProcess">
             <el-button>图像处理</el-button>
         </router-link>
         <router-link to="/ImageMagnifier">
@@ -17,6 +17,9 @@
         </router-link>
         <router-link to="/TreeDemo">
             <el-button>树形组件的应用</el-button>
+        </router-link>
+        <router-link to="/EchartsMap">
+            <el-button>地图组件的应用</el-button>
         </router-link>
     </section>
 </template>

@@ -33,8 +33,8 @@ export default {
 <style lang="scss" scoped>
     .big-img-wrap {
         position: relative;
-        width: 800px;
-        height: 600px;
+        width: px2rem(800);
+        height: px2rem(600);
         overflow: hidden;
         #bigImg {
             position: relative;
@@ -43,7 +43,7 @@ export default {
     }
     .small-img-wrap {
         position: relative;
-        width: 400px;
+        width: px2rem(400);
         #smallImg {
             position: relative;
             width: 100%;
@@ -51,7 +51,7 @@ export default {
         .mirror {
             display: none;
             position: absolute;
-            width: 100px;
+            width: px2rem(100);
             top: 0;
             left: 0;
             background: rgba(0,0,0,0.5);

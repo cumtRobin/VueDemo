@@ -25,3 +25,10 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+    img {
+        width: px2rem(300);
+    }
+</style>
+

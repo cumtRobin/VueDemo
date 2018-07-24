@@ -1,6 +1,6 @@
 <template>
     <section>
-        <video ref="video" id="video" class="camera-video" autoplay></video>
+        <video ref="video" id="video" class="user-camera" autoplay></video>
         <el-button @click="controlUserCamera(true)">打开摄像头</el-button>
         <el-button @click="controlUserCamera(false)">关闭摄像头</el-button>
         <p>使用navigator.mediaDevices.getUserMedia实现</p>
@@ -38,12 +38,28 @@ export default {
                         this.$message({message: message, type: 'error'})
                     });
                 } else {
-                    this.videoTrack.stop()
+                    if (this.videoTrack) {
+                        this.videoTrack.stop()
+                        this.videoTrack = null
+                    }
                 }
             } else {
                 this.$message({message: '您的浏览器不支持navigator.mediaDevices.getUserMedia', type: 'error'})
             }
         }
-    }
+    },
+    beforeDestroy() {
+		if (this.videoTrack) {
+            this.videoTrack.stop()
+            this.videoTrack = null
+        }
+	}
 }
 </script>
+
+<style lang="scss" scoped>
+    .user-camera {
+        width: px2rem(300);
+    }
+</style>
+

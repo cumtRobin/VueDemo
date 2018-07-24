@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/pages/Index'
-import TestProcess from '@/pages/TestProcess'
+import ImgProcess from '@/pages/ImgProcess'
 import ImageMagnifier from '@/pages/ImageMagnifier'
 import UserCamera from '@/pages/UserCamera'
 import NewUserCamera from '@/pages/NewUserCamera'
 import CameraAndUpload from '@/pages/CameraAndUpload'
 import TreeDemo from '@/pages/TreeDemo'
+import EchartsMap from '@/pages/EchartsMap'
 
 Vue.use(Router)
 
@@ -18,9 +19,9 @@ export default new Router({
       component: Index
     },
     {
-      path: '/TestProcess',
-      name: 'TestProcess',
-      component: TestProcess
+      path: '/ImgProcess',
+      name: 'ImgProcess',
+      component: ImgProcess
     },
     {
       path: '/ImageMagnifier',
@@ -46,6 +47,11 @@ export default new Router({
       path: '/TreeDemo',
       name: 'TreeDemo',
       component: TreeDemo
+    },
+    {
+      path: '/EchartsMap',
+      name: 'EchartsMap',
+      component: EchartsMap
     }
   ]
 })

@@ -2,7 +2,7 @@
     <section>
         <el-button @click="openImgDialog">打开摄像头和图片上传组件</el-button>
 
-        <el-dialog title="上传图片" :visible.sync="imgDialogVisible" :close-on-click-modal="false" custom-class="camera-dialog" width="960px" @close="closeUserCamera">
+        <el-dialog title="上传图片" :visible.sync="imgDialogVisible" :close-on-click-modal="false" custom-class="camera-dialog" @close="closeUserCamera">
 			<div class="camera-dialog-container">
 				<div class="camera-container">
 					<div class="camera-wrap">
@@ -66,7 +66,15 @@ export default {
             canvasHeight: 250,
             videoTrack: null
         }
-    },
+	},
+	mounted() {
+		this.$EventService.on('WINDOW_REZISE', () => {
+			if (this.imgDialogVisible) {
+				this.canvasWidth = $('video').width()
+				this.canvasHeight = $('video').height()
+			}
+		})
+	},
     methods: {
         // 打开图片上传dialog
 		openImgDialog() {
@@ -79,7 +87,7 @@ export default {
 		},
 		photograph() {
 			var context = this.$refs.photoCanvas.getContext("2d");
-			context.drawImage(this.$refs.video, 0, 0, 450, 250);
+			context.drawImage(this.$refs.video, 0, 0, this.canvasWidth, this.canvasHeight);
 			var newImg = {
 				SourceImageType: "image/png",
 				Base64String: this.$refs.photoCanvas.toDataURL("image/png"),
@@ -257,9 +265,14 @@ export default {
 				this.videoTrack.stop()
 				this.videoTrack = null
             }
-            
         }
-    }
+	},
+	beforeDestroy() {
+		if (this.videoTrack) {
+            this.videoTrack.stop()
+            this.videoTrack = null
+        }
+	}
 }
 </script>
 

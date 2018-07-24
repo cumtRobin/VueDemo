@@ -5,6 +5,11 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import './assets/css/custom-element.scss'
+import { EventEmitter2 as _EventEmitter2 } from 'eventemitter2'
+
+const EventService = new _EventEmitter2()
+
+Vue.prototype.$EventService = EventService
 
 Vue.use(ElementUI)
 

@@ -1,6 +1,6 @@
 <template>
     <section>
-        <video ref="video" id="video" class="camera-video" autoplay></video>
+        <video ref="video" id="video" class="user-camera" autoplay></video>
         <el-button @click="controlUserCamera(true)">打开摄像头</el-button>
         <el-button @click="controlUserCamera(false)">关闭摄像头</el-button>
 		<p>使用navigator.getUserMedia实现</p>
@@ -41,6 +41,18 @@ export default {
 				}
 			}
         }
-    }
+	},
+	beforeDestroy() {
+		if (this.mediaStreamTrack) {
+			this.mediaStreamTrack.stop()
+			this.mediaStreamTrack = null
+		}
+	}
 }
 </script>
+
+<style lang="scss" scoped>
+    .user-camera {
+        width: px2rem(300);
+    }
+</style>

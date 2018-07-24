@@ -171,34 +171,34 @@ export default {
 <style lang="scss" scoped>
 .front-process-container {
     position: relative;
-    padding: 20px 15px;
+    padding: px2rem(20) px2rem(15);
     #original {
         width: 100%;
         display: none;
     }
     .slider-wrap {
         position: relative;
-        height: 40px;
-        line-height: 14px;
+        height: px2rem(40);
+        line-height: px2rem(14);
         .slider-label {
             float: left;
             text-align: left;
-            margin-right: 5px;
-            letter-spacing: -1px;
+            margin-right: px2rem(5);
+            letter-spacing: px2rem(-1);
         }
     }
     .el-button.op-btn {
-        width:78px;
-        height: 24px;
-        line-height: 24px;
+        width:px2rem(78);
+        height: px2rem(24);
+        line-height: px2rem(24);
         padding: 0;
         margin: 0;
-        margin-bottom: 10px;
-        margin-right: 10px;
+        margin-bottom: px2rem(10);
+        margin-right: px2rem(10);
         text-align: center;
         overflow: hidden;
         float: left;
-        border-radius: 1px;
+        border-radius: px2rem(1);
         &.active {
             background: red;
         }
