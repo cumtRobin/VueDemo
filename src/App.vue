@@ -6,16 +6,22 @@
 
 <script>
 const HTML_FONTSIZE = 100
+const DESIGN_WIDTH = 1920
+const DESIGN_HEIGHT = 1080
 export default {
   name: 'App',
   mounted() {
-    let convertFontSize = window.innerWidth * HTML_FONTSIZE / window.screen.width + 'px'
-    $('html').css('fontSize', convertFontSize)
+    this.convertHtmlFontSize()
     $(window).on('resize', () => {
-      let convertFontSize = window.innerWidth * HTML_FONTSIZE / window.screen.width + 'px'
-      $('html').css('fontSize', convertFontSize)
+      this.convertHtmlFontSize()
       this.$EventService.emit('WINDOW_RESIZE')
     })
+  },
+  methods: {
+    convertHtmlFontSize() {
+      let convertFontSize = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * HTML_FONTSIZE / Math.sqrt(Math.pow(DESIGN_WIDTH, 2) + Math.pow(DESIGN_HEIGHT, 2)) + 'px'
+      $('html').css('fontSize', convertFontSize)
+    }
   },
   beforeDestroy() {
     $(window).off('resize')
