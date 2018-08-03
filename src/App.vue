@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <el-button @click="backToHomePage" v-show="$route.path !== '/'">返回首页</el-button>
     <router-view/>
   </div>
 </template>
@@ -21,6 +22,9 @@ export default {
     convertHtmlFontSize() {
       let convertFontSize = Math.sqrt(Math.pow(window.innerWidth, 2) + Math.pow(window.innerHeight, 2)) * HTML_FONTSIZE / Math.sqrt(Math.pow(DESIGN_WIDTH, 2) + Math.pow(DESIGN_HEIGHT, 2)) + 'px'
       $('html').css('fontSize', convertFontSize)
+    },
+    backToHomePage() {
+      this.$router.push('/')
     }
   },
   beforeDestroy() {

@@ -1,7 +1,7 @@
 <template>
     <section>
         <div id="echartsMap" ref="echartsMap" class="map"></div>
-        <el-button @click="backToUpperMap" v-show="mapStack.length > 1">返回</el-button>
+        <el-button @click="backToUpperMap" v-show="mapStack.length > 1">返回上级地图</el-button>
     </section>
 </template>
 
