@@ -1,7 +1,7 @@
 <template>
     <section>
         <div id="echartsMap" ref="echartsMap" class="map"></div>
-        <el-button @click="backToUpperMap" v-show="mapStack.length > 1">返回上级地图</el-button>
+        <el-button @click="backToUpperMap" v-show="upperMapStack.length > 0">返回上级地图</el-button>
     </section>
 </template>
 
@@ -15,7 +15,33 @@ export default {
             chartMap: null,
             mapOption: null,
             currMapJsonData: null,
-            mapStack: []
+            upperMapStack: [],
+            scatterDatas: [
+                {
+                    name: '长沙机场',
+                    value: [113.0823, 28.2568, 20]
+                },
+                {
+                    name: '上海机场',
+                    value: [121.4648, 31.2891, 40]
+                },
+                {
+                    name: '乌鲁木齐机场',
+                    value: [87.9236, 43.5883, 33]
+                }
+            ],
+            airLineList: [
+                {
+                    from: '长沙机场',
+                    to: '上海机场',
+                    coords: [[113.0823, 28.2568], [121.4648, 31.2891]]
+                },
+                {
+                    from: '长沙机场',
+                    to: '乌鲁木齐机场',
+                    coords: [[113.0823, 28.2568], [87.9236, 43.5883, 33]]
+                }
+            ]
         }
     },
     mounted() {
@@ -28,7 +54,7 @@ export default {
                     return item.properties.name === areaName
                 })
                 let areaId = findArea.properties.id
-                this.getNewMapJson(areaId, areaName)
+                this.getNewMapJson(areaId, areaName, false)
             }
         })
     },
@@ -48,10 +74,13 @@ export default {
             }
             this.chartMap.showLoading()
             axios.get(`static/json/map/${id}.json`).then(resp => {
+                if (!isBack) {
+                    this.upperMapStack.push(this.currentMap)
+                }
                 this.chartMap.hideLoading()
                 this.currMapJsonData = resp.data
                 echarts.registerMap(name, resp.data)
-                this.setChartMap(id, name, isBack)
+                this.setChartMap(id, name)
             }).catch(err => {
                 this.chartMap.hideLoading()
                 if (err.response.status == 404) {
@@ -59,14 +88,24 @@ export default {
                 }
             })
         },
-        setChartMap(mapId, mapName, isBack) {
+        setChartMap(mapId, mapName) {
             this.mapOption = {
                 geo: {
                     map: mapName,
                     type: 'map',
                     zoom: 1.25
                 },
+                tooltip: {
+                    show: false
+                },
+                legend: {
+                    data: ['航线图'],
+                    textStyle: {
+                        color: '#333'
+                    }
+                },
                 series: [
+                    // 地图
                     {
                         name: '监管点地图',
                         type: 'map',
@@ -94,21 +133,89 @@ export default {
                         },
                         zoom: 1.25,
                         data: []
+                    },
+                    // 散点图
+                    {
+                        name: '航线数量',
+                        type: 'scatter',
+                        symbol: 'circle',
+                        symbolSize: '18',
+                        label: {
+                            normal: {
+                                formatter: '{b}',
+                                position: 'right',
+                                show: false
+                            },
+                            emphasis: {
+                                show: true
+                            }
+                        },
+                        itemStyle: {
+                            color: {
+                                type: 'radial',
+                                x: 0.5,
+                                y: 0.5,
+                                r: 0.5,
+                                colorStops: [{
+                                    offset: 0, color: '#bbd49b'
+                                }, {
+                                    offset: 1, color: '#864b21'
+                                }],
+                                globalCoord: false
+                            }
+                        },
+                        coordinateSystem: 'geo',
+                        data: this.scatterDatas,
+                        tooltip: {
+                            trigger: 'item',
+                            show: true,
+                            formatter: function(data) {
+                                return data.name + '<br/>' + data.seriesName + ': ' + data.value[2]
+                            }
+                        },
+                    },
+                    {
+                        name: '航线图',
+                        type: 'lines',
+                        coordinateSystem: 'geo',
+                        zlevel: 1,
+                        effect: {
+                            show: true,
+                            constantSpeed: 120,
+                            symbol: 'arrow',
+                            symbolSize: 16,
+                            trailLength: 0,
+                        },
+                        lineStyle: {
+                            width: 2,
+                            color: {
+                                type: 'linear',
+                                x: 0,
+                                y: 0,
+                                x2: 0,
+                                y2: 1,
+                                colorStops: [{
+                                    offset: 0, color: '#052e55'
+                                }, {
+                                    offset: 1, color: '#cc2fee'
+                                }],
+                                globalCoord: false
+                            },
+                            curveness: 0.2,
+                            opacity: 0.9
+                        },
+                        data: this.upperMapStack.length == 0 ? this.airLineList : []
                     }
                 ]
             };
             this.chartMap.setOption(this.mapOption)
-            if (!isBack) {
-                this.mapStack.push({
-                    mapId: mapId,
-                    mapName: mapName
-                })
+            this.currentMap = {
+                mapId: mapId,
+                mapName: mapName
             }
         },
         backToUpperMap() {
-            this.mapStack.pop()
-            let stackLength = this.mapStack.length
-            let backMapInfo = this.mapStack[stackLength - 1]
+            let backMapInfo = this.upperMapStack.pop()
             this.getNewMapJson(backMapInfo.mapId, backMapInfo.mapName, true)
         }
     }
