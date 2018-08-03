@@ -53,6 +53,7 @@ if (process.env.NODE_ENV === 'production') {
 function initApp() {
   console.log(store.state.config)
   Vue.prototype.$http = createAxiosInstance({baseURL: store.state.config.API_ROOT})
+  Vue.prototype.$getStatic = createAxiosInstance()
   /* eslint-disable no-new */
   new Vue({
     el: '#app',

@@ -8,6 +8,7 @@ import NewUserCamera from '@/pages/NewUserCamera'
 import CameraAndUpload from '@/pages/CameraAndUpload'
 import TreeDemo from '@/pages/TreeDemo'
 import EchartsMap from '@/pages/EchartsMap'
+import MarkdownToHtml from '@/pages/MarkdownToHtml'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/EchartsMap',
       name: 'EchartsMap',
       component: EchartsMap
+    },
+    {
+      path: '/MarkdownToHtml',
+      name: 'MarkdownToHtml',
+      component: MarkdownToHtml
     }
   ]
 })

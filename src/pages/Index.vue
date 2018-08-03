@@ -21,6 +21,9 @@
         <router-link to="/EchartsMap">
             <el-button>地图组件的应用</el-button>
         </router-link>
+        <router-link to="/MarkdownToHtml">
+            <el-button>markdown转html</el-button>
+        </router-link>
     </section>
 </template>
 

@@ -1,11 +1,10 @@
 import axios from 'axios'
 
-let default_options = {
-    withCredentials: true,
-    timeout: 30000
-}
-
 export function createAxiosInstance(options) {
+    let default_options = {
+        withCredentials: true,
+        timeout: 30000
+    }
     let axiosOptions = Object.assign(default_options, options)
     let axiosInstance = axios.create(axiosOptions)
 

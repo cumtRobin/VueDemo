@@ -61,11 +61,13 @@ export default {
     methods: {
         initMap() {
             this.chartMap.showLoading()
-            axios.get('static/json/map/china.json').then(resp => {
+            this.$getStatic('static/json/map/china.json').then(resp => {
                 this.chartMap.hideLoading()
                 this.currMapJsonData = resp.data
                 echarts.registerMap('china', resp.data)
                 this.setChartMap('china', 'china')
+            }, fail => {
+                console.log(fail)
             })
         },
         getNewMapJson(id, name, isBack) {
@@ -73,7 +75,7 @@ export default {
                 id += '00'
             }
             this.chartMap.showLoading()
-            axios.get(`static/json/map/${id}.json`).then(resp => {
+            this.$getStatic(`static/json/map/${id}.json`).then(resp => {
                 if (!isBack) {
                     this.upperMapStack.push(this.currentMap)
                 }
