@@ -28,32 +28,28 @@ export default {
                 geo: {
                     map: mapName,
                     type: 'map',
-                    itemStyle: {
-                        opacity: '0.9'
-                    },
                     zoom: 1.25
                 },
                 series: [
                     {
                         name: '监管点地图',
                         type: 'map',
+                        map: mapName,
                         selectedMode: 'single',
                         label: {
-                            normal: {
-                                show: true,
-                                color: '#333'
-                            }         
+                            show: true,
+                            color: '#333',
+                            emphasis: {
+                                color: 'yellow'
+                            }      
                         },
                         itemStyle: {
                             borderWidth: 2,
                             borderColor: '#0f5c94',
-                            areaColor: '#f74700',
+                            areaColor: 'lightblue',
                             opacity: '0.9'
                         },
                         emphasis: {
-                            label: {
-                                color: '#fff'
-                            },
                             itemStyle: {
                                 areaColor: '#f74700',
                                 shadowColor: '#f4deb9',
