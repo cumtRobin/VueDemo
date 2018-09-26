@@ -24,6 +24,3 @@ some vue demo writted by myself
 ## 树形组件的应用
 
 使用el-tree组件
-
-****
-

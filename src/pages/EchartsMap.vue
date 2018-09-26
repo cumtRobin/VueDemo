@@ -226,8 +226,8 @@ export default {
 
 <style lang="scss" scoped>
     .map {
-        width: 1200px;
-        height: 800px;
+        width: px2rem(1200);
+        height: px2rem(800);
     }
 </style>
 
