@@ -25,7 +25,7 @@
             <el-button>markdown转html</el-button>
         </router-link>
         <router-link to="/VideoJs">
-            <el-button>VideoJs</el-button>
+            <el-button>VideoJS+flash播放rtmp</el-button>
         </router-link>
     </section>
 </template>

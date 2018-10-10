@@ -9,6 +9,9 @@ import './assets/css/custom-element.scss'
 import axios from 'axios'
 import { EventEmitter2 as _EventEmitter2 } from 'eventemitter2'
 import { createAxiosInstance } from './assets/js/api'
+import VueI18n from 'vue-i18n'
+
+Vue.use(VueI18n)
 
 const EventService = new _EventEmitter2()
 
@@ -63,5 +66,3 @@ function initApp() {
     template: '<App/>'
   })
 }
-
-
