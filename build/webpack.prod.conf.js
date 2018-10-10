@@ -9,7 +9,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const GenerateAssetPlugin = require('generate-asset-webpack-plugin')
 
 const env = require('../config/prod.env')
 
@@ -107,23 +106,9 @@ const webpackConfig = merge(baseWebpackConfig, {
       async: 'vendor-async',
       children: true,
       minChunks: 3
-    }),
-    new GenerateAssetPlugin({
-      filename: 'config.json',
-      fn: (compilation, cb) => {
-          cb(null, createServerConfig(compilation));
-      },
-      extraFiles: []
     })
   ]
 })
-
-function createServerConfig(compilation){
-  var cfgJson={
-    API_ROOT: 'http://172.16.2.237:8096'
-  }
-  return JSON.stringify(cfgJson, null, 2)
-}
 
 if (config.build.productionGzip) {
   const CompressionWebpackPlugin = require('compression-webpack-plugin')

@@ -53,19 +53,14 @@ router.beforeEach((to, from, next) => {
 
 Vue.config.productionTip = false
 
-if (process.env.NODE_ENV === 'production') {
-  axios.get('config.json', {
-    headers: {
-      'Cache-Control': 'no-cache'
-    }
-  }).then((result) => {
-    store.commit('updateConfig', result.data)
-    initApp()
-  }).catch((error) => { console.log(error) })
-} else {
-  store.commit('updateConfig', process.env)
+axios.get('config.json', {
+  headers: {
+    'Cache-Control': 'no-cache'
+  }
+}).then((result) => {
+  store.commit('updateConfig', result.data)
   initApp()
-}
+}).catch((error) => { console.log(error) })
 
 function initApp() {
   console.log(store.state.config)

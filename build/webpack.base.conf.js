@@ -52,6 +52,10 @@ module.exports = {
       {
         from: path.resolve(__dirname, '../src/assets/markdown'),
         to: config.build.assetsSubDirectory + '/markdown'
+      },
+      {
+        from: path.resolve(__dirname, '../config/config.json'),
+        to: './'
       }
     ])
   ],
