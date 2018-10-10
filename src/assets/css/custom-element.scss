@@ -241,3 +241,9 @@ body, .my_scroll {
 		}
 	}
 }
+
+.el-input {
+	&.j-input {
+		width: auto;
+	}
+}

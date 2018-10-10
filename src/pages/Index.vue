@@ -27,6 +27,9 @@
         <router-link to="/VideoJs">
             <el-button>VideoJS+flash播放rtmp</el-button>
         </router-link>
+        <router-link to="/Lang">
+            <el-button>vue国际化</el-button>
+        </router-link>
     </section>
 </template>
 

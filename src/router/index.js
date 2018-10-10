@@ -10,6 +10,7 @@ import TreeDemo from '@/pages/TreeDemo'
 import EchartsMap from '@/pages/EchartsMap'
 import MarkdownToHtml from '@/pages/MarkdownToHtml'
 import VideoJs from '@/pages/VideoJs'
+import Lang from '@/pages/Lang'
 
 Vue.use(Router)
 
@@ -64,6 +65,11 @@ export default new Router({
       path: '/VideoJs',
       name: 'VideoJs',
       component: VideoJs
+    },
+    {
+      path: '/Lang',
+      name: 'Lang',
+      component: Lang
     }
   ]
 })
