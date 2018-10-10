@@ -28,10 +28,10 @@ export default {
         changeLang() {
             if (this.$i18n.locale == 'en') {
                 this.$i18n.locale = 'zh'
-                localStorage.setItem('UserLang', 'zh')
+                this.$store.commit('updateLang', 'zh')
             } else {
                 this.$i18n.locale = 'en'
-                localStorage.setItem('UserLang', 'en')
+                this.$store.commit('updateLang', 'en')
             }
         }
     }
@@ -41,4 +41,3 @@ export default {
 <style lang="scss" scoped>
 
 </style>
-

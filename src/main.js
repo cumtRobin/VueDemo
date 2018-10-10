@@ -14,16 +14,7 @@ import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
 const NavigatorLang = (navigator.language || navigator.userLanguage).substr(0, 2)
 
-const i18n = new VueI18n({
-  locale: localStorage.getItem('UserLang') || NavigatorLang,
-  messages: {
-    'zh': require('../static/lang/zh'),
-    'en': require('../static/lang/en')
-  }
-})
-
 const EventService = new _EventEmitter2()
-
 
 Vue.prototype.$EventService = EventService
 
@@ -45,6 +36,14 @@ const store = new Vuex.Store({
       state.currentLang = value
       localStorage.setItem('UserLang', state.currentLang)
     }
+  }
+})
+
+const i18n = new VueI18n({
+  locale: store.state.currentLang,
+  messages: {
+    'zh': require('../static/lang/zh'),
+    'en': require('../static/lang/en')
   }
 })
 
