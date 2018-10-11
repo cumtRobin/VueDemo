@@ -30,6 +30,9 @@
         <router-link to="/Lang">
             <el-button>vue国际化</el-button>
         </router-link>
+        <router-link to="/PdfViewer">
+            <el-button>pdf阅读器</el-button>
+        </router-link>
     </section>
 </template>
 

@@ -11,6 +11,7 @@ import EchartsMap from '@/pages/EchartsMap'
 import MarkdownToHtml from '@/pages/MarkdownToHtml'
 import VideoJs from '@/pages/VideoJs'
 import Lang from '@/pages/Lang'
+import PdfViewer from '@/pages/PdfViewer'
 
 Vue.use(Router)
 
@@ -70,6 +71,11 @@ export default new Router({
       path: '/Lang',
       name: 'Lang',
       component: Lang
+    },
+    {
+      path: '/PdfViewer',
+      name: 'PdfViewer',
+      component: PdfViewer
     }
   ]
 })
