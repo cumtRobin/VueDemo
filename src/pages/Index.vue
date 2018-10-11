@@ -33,6 +33,9 @@
         <router-link to="/PdfViewer">
             <el-button>pdf阅读器</el-button>
         </router-link>
+        <router-link to="/CanvasSignature">
+            <el-button>Canvas电子签名</el-button>
+        </router-link>
     </section>
 </template>
 

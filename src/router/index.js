@@ -12,6 +12,7 @@ import MarkdownToHtml from '@/pages/MarkdownToHtml'
 import VideoJs from '@/pages/VideoJs'
 import Lang from '@/pages/Lang'
 import PdfViewer from '@/pages/PdfViewer'
+import CanvasSignature from '@/pages/CanvasSignature'
 
 Vue.use(Router)
 
@@ -76,6 +77,11 @@ export default new Router({
       path: '/PdfViewer',
       name: 'PdfViewer',
       component: PdfViewer
+    },
+    {
+      path: '/CanvasSignature',
+      name: 'CanvasSignature',
+      component: CanvasSignature
     }
   ]
 })

@@ -34,8 +34,8 @@ export default {
                 // myPlayer.src({ type: "rtmp/flv", src: 'rtmp://mobliestream.c3tv.com:554/live/goodtv.sdp' });
                 // myPlayer.src({ type: "rtmp/flv", src: 'rtmp://202.69.69.180:443/webcast/bshdlive-pc' });
                 // myPlayer.src({ type: "rtmp/flv", src: 'rtmp://live.chosun.gscdn.com/live/tvchosun1.stream' });
-                // myPlayer.src({ type: "rtmp/flv", src: 'rtmp://ns8.indexforce.com/home/mystream' });
-                myPlayer.src({ type: "rtmp/flv", src: 'rtmp://media3.sinovision.net:1935/live/livestream' });
+                myPlayer.src({ type: "rtmp/flv", src: 'rtmp://ns8.indexforce.com/home/mystream' });
+                // myPlayer.src({ type: "rtmp/flv", src: 'rtmp://media3.sinovision.net:1935/live/livestream' });
                 myPlayer.load();
                 myPlayer.play();
             });
