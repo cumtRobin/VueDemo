@@ -5,16 +5,7 @@
 </template>
 
 <script>
-import * as _ from 'underscore';
 export default {
-    data(){
-        return {
-
-        }
-    },
-    methods: {
-
-    }
 }
 </script>
 

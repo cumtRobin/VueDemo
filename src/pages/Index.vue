@@ -36,6 +36,9 @@
         <router-link to="/CanvasSignature">
             <el-button>Canvas电子签名</el-button>
         </router-link>
+        <router-link to="/PdfSignature">
+            <el-button>PDF电子签名</el-button>
+        </router-link>
     </section>
 </template>
 

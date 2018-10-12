@@ -13,6 +13,7 @@ import VideoJs from '@/pages/VideoJs'
 import Lang from '@/pages/Lang'
 import PdfViewer from '@/pages/PdfViewer'
 import CanvasSignature from '@/pages/CanvasSignature'
+import PdfSignature from '@/pages/PdfSignature'
 
 Vue.use(Router)
 
@@ -82,6 +83,11 @@ export default new Router({
       path: '/CanvasSignature',
       name: 'CanvasSignature',
       component: CanvasSignature
+    },
+    {
+      path: '/PdfSignature',
+      name: 'PdfSignature',
+      component: PdfSignature
     }
   ]
 })
