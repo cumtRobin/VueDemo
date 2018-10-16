@@ -17,9 +17,8 @@ export default {
 
     },
     mounted() {
-        this.$getStatic('static/markdown/test.md').then(resp => {
-            console.log(resp)
-            this.$refs.article.innerHTML = marked(resp.data)
+        this.$httpLocal.get('static/markdown/test.md').then(resp => {
+            this.$refs.article.innerHTML = marked(resp)
         })
     }
 }

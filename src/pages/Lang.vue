@@ -10,7 +10,7 @@
             <el-select v-model="iphoneIndex">
                 <el-option v-for="iphone in iphoneList" :key="iphone" :value="iphone" :label="iphone"></el-option>
             </el-select>
-            多元化：{{$tc('iphones', iphoneIndex)}}</div>
+            多元化：{{$tc('iphones', iphoneIndex, {n: '3台'})}}</div>
     </section>
 </template>
 

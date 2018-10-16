@@ -111,6 +111,15 @@ Signature.prototype.setSigned = function(value) {
     this.signed = value
 }
 
+Signature.prototype.downLoadCanvasImg = function(name) {
+    var imageURL = this._canvas.toDataURL()
+    var a = document.createElement('a')
+    a.href = imageURL
+    a.download = name || '电子签名' + new Date().toString()
+    a.click()
+    a = null
+}
+
 export {
     Signature
 }

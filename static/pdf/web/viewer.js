@@ -1895,8 +1895,11 @@ function webViewerInitialized() {
   var file = void 0;
   var queryString = document.location.search.substring(1);
   var params = (0, _ui_utils.parseQueryString)(queryString);
+  console.log(params)
   file = 'file' in params ? params.file : appConfig.defaultUrl;
-  validateFileURL(file);
+  if ('local' in params) {
+    validateFileURL(file);
+  }
   var waitForBeforeOpening = [];
   var fileInput = document.createElement('input');
   fileInput.id = appConfig.openFileInputName;

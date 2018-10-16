@@ -8,7 +8,7 @@ import ElementUI from 'element-ui'
 import './assets/css/custom-element.scss'
 import axios from 'axios'
 import { EventEmitter2 as _EventEmitter2 } from 'eventemitter2'
-import { createAxiosInstance } from './assets/js/api'
+import { ajaxApi } from './assets/js/api'
 import VueI18n from 'vue-i18n'
 
 Vue.use(VueI18n)
@@ -64,8 +64,8 @@ axios.get('config.json', {
 
 function initApp() {
   console.log(store.state.config)
-  Vue.prototype.$http = createAxiosInstance({baseURL: store.state.config.API_ROOT})
-  Vue.prototype.$getStatic = createAxiosInstance()
+  Vue.prototype.$http = ajaxApi(EventService, store.state.config.API_ROOT)
+  Vue.prototype.$httpLocal = ajaxApi(EventService, '')
   /* eslint-disable no-new */
   new Vue({
     el: '#app',

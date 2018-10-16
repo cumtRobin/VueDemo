@@ -14,6 +14,7 @@ import Lang from '@/pages/Lang'
 import PdfViewer from '@/pages/PdfViewer'
 import CanvasSignature from '@/pages/CanvasSignature'
 import PdfSignature from '@/pages/PdfSignature'
+import DynamicForm from '@/pages/DynamicForm'
 
 Vue.use(Router)
 
@@ -88,6 +89,11 @@ export default new Router({
       path: '/PdfSignature',
       name: 'PdfSignature',
       component: PdfSignature
+    },
+    {
+      path: '/DynamicForm',
+      name: 'DynamicForm',
+      component: DynamicForm
     }
   ]
 })

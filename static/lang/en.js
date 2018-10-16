@@ -1,5 +1,5 @@
 module.exports = {
     helloworld: 'hello world',
     helloman: 'hello {name}',
-    iphones: 'iphone5 | iphone6 | iphone7'
+    iphones: '{n} iphone5 | iphone6 | iphone7'
 }

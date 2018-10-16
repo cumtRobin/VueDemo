@@ -3,7 +3,7 @@
         <div class="canvas-container-hide">
             <canvas id="pdf-canvas-hide"></canvas>
         </div>
-        <div class="canvas-container">
+        <div class="canvas-container" v-loading="loadingPDF">
             <canvas id="pdf-canvas"></canvas>
         </div>
         <el-button @click="prev">上一页</el-button>
@@ -28,7 +28,8 @@ export default {
             signature: null,
             getAllCurrentPage: 1,
             imageDataList: [],
-            signatureDataURL: ''
+            signatureDataURL: '',
+            loadingPDF: false
         }
     },
     mounted() {
@@ -52,7 +53,7 @@ export default {
         },
         getAllPage() {
             this.pdf.getPage(this.getAllCurrentPage).then(page => {
-                var scale = 1.5
+                var scale = 1.3
                 var viewport = page.getViewport(scale)
                 var canvas = document.getElementById('pdf-canvas-hide')
                 var context = canvas.getContext('2d')
@@ -74,10 +75,11 @@ export default {
             });
         },
         changePage(pageNo) {
+            this.loadingPDF = true
             return new Promise((resolve, reject) => {
                 this.pdf.getPage(pageNo).then(page => {
                     console.log('pdf当前页：', page)
-                    var scale = 1.5
+                    var scale = 1.3
                     var viewport = page.getViewport(scale)
                     var canvas = document.getElementById('pdf-canvas')
                     var context = canvas.getContext('2d')
@@ -91,6 +93,7 @@ export default {
                         if (this.signature) {
                             this.signature.enable = pageNo == this.numPages ? true : false
                         }
+                        this.loadingPDF = false
                         resolve()
                     })
                 });
@@ -141,12 +144,7 @@ export default {
         },
         downloadSignature() {
             if (this.signature) {
-                var imageURL = this.signature._canvas.toDataURL()
-                var a = document.createElement('a')
-                a.href = imageURL
-                a.download = '电子签名' + new Date().toString()
-                a.click()
-                a = null
+                this.signature.downLoadCanvasImg()
             }
         },
         generatePDF() {

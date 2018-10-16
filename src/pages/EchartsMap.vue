@@ -61,10 +61,10 @@ export default {
     methods: {
         initMap() {
             this.chartMap.showLoading()
-            this.$getStatic('static/json/map/china.json').then(resp => {
+            this.$httpLocal.get('static/json/map/china.json').then(resp => {
                 this.chartMap.hideLoading()
-                this.currMapJsonData = resp.data
-                echarts.registerMap('china', resp.data)
+                this.currMapJsonData = resp
+                echarts.registerMap('china', resp)
                 this.setChartMap('china', 'china')
             }, fail => {
                 console.log(fail)
@@ -75,13 +75,13 @@ export default {
                 id += '00'
             }
             this.chartMap.showLoading()
-            this.$getStatic(`static/json/map/${id}.json`).then(resp => {
+            this.$httpLocal.get(`static/json/map/${id}.json`).then(resp => {
                 if (!isBack) {
                     this.upperMapStack.push(this.currentMap)
                 }
                 this.chartMap.hideLoading()
-                this.currMapJsonData = resp.data
-                echarts.registerMap(name, resp.data)
+                this.currMapJsonData = resp
+                echarts.registerMap(name, resp)
                 this.setChartMap(id, name)
             }).catch(err => {
                 this.chartMap.hideLoading()

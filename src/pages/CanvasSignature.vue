@@ -17,12 +17,9 @@ export default {
     },
     methods: {
         save() {
-            var imageURL = this.signature._canvas.toDataURL()
-            var a = document.createElement('a')
-            a.href = imageURL
-            a.download = 'Canvas电子签名' + new Date().toString()
-            a.click()
-            a = null
+            if (this.signature) {
+                this.signature.downLoadCanvasImg()
+            }
         },
         reset() {
             this.signature.reset()
