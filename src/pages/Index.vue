@@ -39,7 +39,7 @@
         <router-link to="/PdfSignature">
             <el-button>PDF电子签名</el-button>
         </router-link>
-        <router-link to="/DynamicForm">
+        <router-link to="/DynamicFormTest">
             <el-button>创建动态表单</el-button>
         </router-link>
     </section>

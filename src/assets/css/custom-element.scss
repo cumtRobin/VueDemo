@@ -247,3 +247,9 @@ body, .my_scroll {
 		width: auto;
 	}
 }
+
+.el-date-editor {
+	&.dynamic-date-editor {
+		width: 100%;
+	}
+}
