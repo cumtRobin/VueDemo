@@ -10,6 +10,7 @@ import axios from 'axios'
 import { EventEmitter2 as _EventEmitter2 } from 'eventemitter2'
 import { ajaxApi } from './assets/js/api'
 import VueI18n from 'vue-i18n'
+import LazyLoad from './directives/lazyload'
 
 Vue.use(VueI18n)
 const NavigatorLang = (navigator.language || navigator.userLanguage).substr(0, 2)
@@ -20,6 +21,8 @@ Vue.prototype.$EventService = EventService
 
 Vue.use(Vuex)
 Vue.use(ElementUI)
+
+Vue.directive('lazyload', LazyLoad)
 
 // vuex配置
 const store = new Vuex.Store({
