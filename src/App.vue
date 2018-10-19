@@ -11,12 +11,22 @@ const DESIGN_WIDTH = 1920
 const DESIGN_HEIGHT = 1080
 export default {
   name: 'App',
+  data() {
+    return {
+      bigImgUrl: '',
+      showImgBox: false
+    }
+  },
   mounted() {
     this.convertHtmlFontSize()
     $(window).on('resize', () => {
       this.convertHtmlFontSize()
       this.$EventService.emit('WINDOW_RESIZE')
     })
+    this.$EventService.on('SHOW_IMG_BOX', url => {
+			this.bigImgUrl = url
+			this.showImgBox = true
+		})
   },
   methods: {
     convertHtmlFontSize() {

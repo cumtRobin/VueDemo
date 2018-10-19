@@ -1,5 +1,5 @@
 <template>
-    <dynamic-form :formList="formLists" :formModel="formModel" :formOption="formOption"></dynamic-form>
+    <dynamic-form :formList="formLists" :formModel="formModel" :formOption="formOption" v-if="formModel && formOption"></dynamic-form>
 </template>
 
 <script>
@@ -14,8 +14,8 @@ export default {
     data() {
         return {
             formLists: [],
-            formOption: {},
-            formModel: {}
+            formOption: null,
+            formModel: null
         }
     },
     mounted() {
@@ -25,7 +25,7 @@ export default {
     },
     methods: {
         getFormDatas() {
-            this.formLists = [
+            var datas = [
                 {
                     key: 'name',
                     type: 'text',
@@ -146,17 +146,52 @@ export default {
                         {
                             value: 2,
                             label: '女'
-                        },
+                        }
                     ],
                     required: true
+                },
+                {
+                    key: 'hobby',
+                    type: 'checkbox',
+                    label: '爱好',
+                    model: [],
+                    options: [
+                        {
+                            value: 1,
+                            label: '运动'
+                        },
+                        {
+                            value: 2,
+                            label: '电影'
+                        },
+                        {
+                            value: 3,
+                            label: '购物'
+                        }
+                    ],
+                    required: true
+                },
+                {
+                    label: '附件',
+                    type: 'file'
                 }
             ]
+            _.each(datas, item => {
+                if (item.type == 'checkbox') {
+                    // checkbox没有label和value之分，界面上展示的是label，具体到值也是label，所以需要做特殊处理，先备份options，并取出label数组循环作为各个checkbox的值
+                    item.originalOptions = _.clone(item.options)
+                    item.options = _.pluck(item.options, 'label')
+                }
+            })
+            this.formLists = datas
             console.log('formLists: ', this.formLists)
         },
         generateFormModel() {
+            var obj = {}
             this.formLists.forEach((value, index) => {
-                this.formModel[value.key] = value.model
+                obj[value.key] = value.model
             })
+            this.formModel = obj
             console.log('formModel: ', this.formModel)
         },
         generateOptions() {
@@ -165,7 +200,7 @@ export default {
                 var propRule = []
                 // 通用规则定义
                 if (item.required) {
-                    if (item.type == 'select' || item.type == 'radio') {
+                    if (item.type == 'select' || item.type == 'radio' || item.type == 'checkbox') {
                         propRule.push({ required: true, message: `必须填写${item.label}`, trigger: 'change'})
                     } else {
                         propRule.push({ required: true, message: `必须填写${item.label}`, trigger: 'blur'})
