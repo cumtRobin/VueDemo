@@ -42,6 +42,18 @@
         <router-link to="/DynamicFormTest">
             <el-button>创建动态表单</el-button>
         </router-link>
+        <router-link to="/CSSTest">
+            <el-button>CSS测试</el-button>
+        </router-link>
+        <router-link to="/SlotDemo">
+            <el-button>Slot Demo</el-button>
+        </router-link>
+        <router-link to="/SlotScopeDemo">
+            <el-button>作用域插槽</el-button>
+        </router-link>
+        <router-link to="/Svg2img">
+            <el-button>SVG在线转图片</el-button>
+        </router-link>
     </section>
 </template>
 

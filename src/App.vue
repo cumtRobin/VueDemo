@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <el-button @click="backToHomePage" v-show="$route.path !== '/'">返回首页</el-button>
+    <el-button @click="backToHomePage" v-show="$route.path !== '/'" style="margin-bottom:30px;">返回首页</el-button>
     <router-view/>
   </div>
 </template>

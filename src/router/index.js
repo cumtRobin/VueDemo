@@ -15,6 +15,10 @@ import PdfViewer from '@/pages/PdfViewer'
 import CanvasSignature from '@/pages/CanvasSignature'
 import PdfSignature from '@/pages/PdfSignature'
 import DynamicFormTest from '@/pages/DynamicFormTest'
+import CSSTest from '@/pages/CSSTest'
+import SlotDemo from '@/pages/SlotDemo'
+import SlotScopeDemo from '@/pages/SlotScopeDemo'
+import Svg2img from '@/pages/Svg2img'
 
 Vue.use(Router)
 
@@ -94,6 +98,26 @@ export default new Router({
       path: '/DynamicFormTest',
       name: 'DynamicFormTest',
       component: DynamicFormTest
+    },
+    {
+      path: '/CSSTest',
+      name: 'CSSTest',
+      component: CSSTest
+    },
+    {
+      path: '/SlotDemo',
+      name: 'SlotDemo',
+      component: SlotDemo
+    },
+    {
+      path: '/SlotScopeDemo',
+      name: 'SlotScopeDemo',
+      component: SlotScopeDemo
+    },
+    {
+      path: '/Svg2img',
+      name: 'Svg2img',
+      component: Svg2img
     }
   ]
 })

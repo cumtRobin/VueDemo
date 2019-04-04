@@ -15,7 +15,7 @@ html, body {
 	padding: 0;
 }
 
-div, span, label, p {
+p {
 	font-size: px2rem(16);
 }
 
@@ -257,5 +257,34 @@ body, .my_scroll {
 .el-select {
 	&.dynamic-select {
 		width: 100%;
+	}
+}
+
+.el-card {
+	&.card-column {
+		>.el-card__header {
+			padding: px2rem(10) px2rem(18);
+			background: #ead5d5;
+			color: #dc500d;
+			font-weight: 700;
+			font-size: px2rem(32);
+			text-align: left;
+		}
+	}
+	&.card-commodity {
+		.el-card__header {
+			padding: px2rem(5) px2rem(18);
+			background: #ead5d5;
+			color: #9d81e0;
+			font-size: px2rem(18);
+			font-weight: 600;
+		}
+		.el-card__body {
+			height: px2rem(240);
+			p {
+				text-align: left;
+				text-indent: 2em;
+			}
+		}
 	}
 }
