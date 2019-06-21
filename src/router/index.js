@@ -20,6 +20,13 @@ import SlotDemo from '@/pages/SlotDemo'
 import SlotScopeDemo from '@/pages/SlotScopeDemo'
 import Svg2img from '@/pages/Svg2img'
 
+// 百度地图
+import BaiduMap from '@/pages/baiduMap'
+import ShowMap from '@/pages/baiduMap/showMap'
+import AsyncLoadMap from '@/pages/baiduMap/asyncLoadMap'
+import MapControl from '@/pages/baiduMap/mapControl'
+import MapOverlay from '@/pages/baiduMap/mapOverlay'
+
 Vue.use(Router)
 
 export default new Router({
@@ -118,6 +125,17 @@ export default new Router({
       path: '/Svg2img',
       name: 'Svg2img',
       component: Svg2img
+    },
+    {
+      path: '/baidumap',
+      name: 'BaiduMap',
+      component: BaiduMap,
+      children: [
+        { path: '', component: ShowMap },
+        { path: 'async_load', component: AsyncLoadMap },
+        { path: 'map_control', component: MapControl },
+        { path: 'map_overlay', component: MapOverlay }
+      ]
     }
   ]
 })

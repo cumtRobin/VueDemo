@@ -28,6 +28,16 @@ Vue.directive('lazyload', LazyLoad)
 Vue.directive('lazyshow', LazyShow)
 Vue.directive('showimgbox', ShowImgbox)
 
+window.addEventListener('hashchange', function(event) {
+  console.log('hashchange', event);
+  
+});
+
+window.addEventListener('popstate', function(event) {
+  console.log('popstate', event);
+  
+});
+
 // vuex配置
 const store = new Vuex.Store({
   state: {
