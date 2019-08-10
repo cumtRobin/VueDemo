@@ -1,4 +1,3 @@
-@import 'pre-loader.scss';
 @import 'element-variables.scss';
 
 /* 改变 icon 字体路径变量，必需 */
@@ -19,7 +18,8 @@ p {
 	font-size: px2rem(16);
 }
 
-body, .my_scroll {
+body,
+.my_scroll {
 	overflow: auto;
 	// 滚动条整体
 	&::-webkit-scrollbar {

@@ -57,6 +57,9 @@
         <router-link to="/baidumap">
             <el-button>百度地图测试</el-button>
         </router-link>
+        <router-link to="/iconfont">
+            <el-button>iconfont测试</el-button>
+        </router-link>
     </section>
 </template>
 

@@ -136,6 +136,11 @@ export default new Router({
         { path: 'map_control', component: MapControl },
         { path: 'map_overlay', component: MapOverlay }
       ]
+    },
+    {
+      path: '/iconfont',
+      name: 'iconfont',
+      component: () => import('@/pages/IconfontTest.vue')
     }
   ]
 })
