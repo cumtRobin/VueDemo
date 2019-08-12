@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '@/pages/Index'
+import Index from '@/pages/index.vue'
 import ImgProcess from '@/pages/ImgProcess'
 import ImageMagnifier from '@/pages/ImageMagnifier'
 import UserCamera from '@/pages/UserCamera'
@@ -19,6 +19,7 @@ import CSSTest from '@/pages/CSSTest'
 import SlotDemo from '@/pages/SlotDemo'
 import SlotScopeDemo from '@/pages/SlotScopeDemo'
 import Svg2img from '@/pages/Svg2img'
+import LearnCanvas from '@/pages/learn-canvas'
 
 // 百度地图
 import BaiduMap from '@/pages/baiduMap'
@@ -125,6 +126,10 @@ export default new Router({
       path: '/Svg2img',
       name: 'Svg2img',
       component: Svg2img
+    },
+    {
+      path: '/learn-canvas',
+      component: LearnCanvas
     },
     {
       path: '/baidumap',

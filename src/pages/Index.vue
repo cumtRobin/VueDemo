@@ -60,6 +60,9 @@
         <router-link to="/iconfont">
             <el-button>iconfont测试</el-button>
         </router-link>
+        <router-link to="/learn-canvas">
+            <el-button>Canvas学习</el-button>
+        </router-link>
     </section>
 </template>
 

@@ -39,7 +39,7 @@ export default {
                 a.download = "svg转的图片";
                 a.click();
             }
-            image.src = 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(this.svghtml)));
+            image.src = 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent($('#svgContainer').html())));
         }
     }
 }
